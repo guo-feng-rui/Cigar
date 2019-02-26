@@ -1,5 +1,5 @@
 (function(wHandle, wjQuery) {
-    var CONNECTION_URL = "127.0.0.1:443", // Default Connection
+    var CONNECTION_URL = "127.0.0.1:8080", // Default Connection
         SKIN_URL = "./skins/"; // Skin Directory
 
     wHandle.setserver = function(arg) {
@@ -673,9 +673,18 @@
 
     function sendNickName() {
         if (wsIsOpen() && null != userNickName) {
-            var msg = prepareData(1 + 2 * userNickName.length);
+            var msg = prepareData(1 + 2 * (teamName.length + 1));
+            msg.setUint8(0, 2);
+            for (var i = 0; i < teamName.length; ++i) {
+                msg.setUint16(1 + 2 * i, teamName.charCodeAt(i), true)
+            };
+            wsSend(msg)
+
+            var msg = prepareData(1 + 2 * (userNickName.length + 1));
             msg.setUint8(0, 0);
-            for (var i = 0; i < userNickName.length; ++i) msg.setUint16(1 + 2 * i, userNickName.charCodeAt(i), true);
+            for (var i = 0; i < userNickName.length; ++i) {
+                msg.setUint16(1 + 2 * i, userNickName.charCodeAt(i), true)
+            };
             wsSend(msg)
         }
     }
@@ -996,6 +1005,7 @@
         cb = 0,
         timestamp = 0,
         userNickName = null,
+        teamName = null,
         leftPos = 0,
         topPos = 0,
         rightPos = 1E4,
@@ -1022,7 +1032,7 @@
         drawLineX = 0,
         drawLineY = 0,
         Ra = 0,
-        teamColor = ["#333333", "#FF3333", "#33FF33", "#3333FF"],
+        teamColor = ["#333333", "#FF3333", "#3333FF", "#33FF33"],
         xa = false,
         zoom = 1,
         isTouchStart = "ontouchstart" in wHandle && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
@@ -1039,6 +1049,9 @@
         userNickName = arg;
         sendNickName();
         userScore = 0
+    };
+    wHandle.setTeam = function(arg) {
+        teamName = arg;
     };
     wHandle.setSkins = function(arg) {
         showSkin = arg
