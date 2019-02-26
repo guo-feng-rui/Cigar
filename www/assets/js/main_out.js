@@ -320,7 +320,7 @@
         nodelist = [];
         Cells = [];
         leaderBoard = [];
-        mainCanvas = teamScores = null;
+        mainCanvas = teamScores = teamScore = null;
         userScore = 0;
         log.info("Connecting to " + wsUrl + "..");
         ws = new WebSocket(wsUrl);
@@ -440,6 +440,34 @@
                     offset += 4;
                 }
                 drawLeaderBoard();
+                break;
+            case 51: // update leaderboard (double)
+                if (!setCustomLB) {
+                    noRanking = false;
+                }
+                teamScores = null;
+                var LBplayerNum = msg.getUint32(offset, true);
+                offset += 4;
+                leaderBoard = [];
+                for (i = 0; i < LBplayerNum; ++i) {
+                    var nodeId = msg.getUint32(offset, true);
+                    offset += 4;
+                    let data = getString()
+                    leaderBoard.push({
+                        id: nodeId,
+                        name: JSON.parse(data).name,
+                        team: JSON.parse(data).team
+                    })
+                }
+                drawLeaderBoard();
+                teamScore = [];
+                var LBteamNum = msg.getUint32(offset, true);
+                offset += 4;
+                for (var i = 0; i < LBteamNum; ++i) {
+                    teamScore.push(msg.getFloat32(offset, true));
+                    offset += 4;
+                }
+                drawTeamLeaderBoard();
                 break;
             case 64: // set border
                 leftPos = msg.getFloat64(offset, true);
@@ -813,7 +841,8 @@
             ctx.restore()
         }
         ctx.restore();
-        lbCanvas && lbCanvas.width && ctx.drawImage(lbCanvas, canvasWidth - lbCanvas.width - 10, 10); // draw Leader Board
+        lbCanvas && lbCanvas.width && ctx.drawImage(lbCanvas, canvasWidth - lbCanvas.width - 10, 10 + lbCanvas2.height + 10); // draw Leader Board
+        lbCanvas2 && lbCanvas2.width && ctx.drawImage(lbCanvas2, canvasWidth - lbCanvas2.width - 10, 10)
         if (chatCanvas != null) ctx.drawImage(chatCanvas, 0, canvasHeight - chatCanvas.height - 50); // draw Leader Board
 
         userScore = Math.max(userScore, calcUserScore());
@@ -927,13 +956,13 @@
                 lbCanvas.height = boardLength * scaleFactor;
 
                 ctx.scale(scaleFactor, scaleFactor);
-                ctx.globalAlpha = .4;
+                ctx.globalAlpha = .6;
                 ctx.fillStyle = "#000000";
                 ctx.fillRect(0, 0, 200, boardLength);
 
                 ctx.globalAlpha = 1;
                 ctx.fillStyle = "#FFFFFF";
-                var c = "Leaderboard";
+                var c = "個人排行榜";
                 ctx.font = "30px Ubuntu";
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
                 var b, l;
@@ -945,7 +974,7 @@
                         }
                         var me = -1 != nodesOnScreen.indexOf(leaderBoard[b].id);
                         if (me) playerCells[0].name && (c = playerCells[0].name);
-                        me ? ctx.fillStyle = "#FFAAAA" : ctx.fillStyle = "#FFFFFF";
+                        me ? ctx.fillStyle = "#FFAAAA" : ctx.fillStyle = teamColor[leaderBoard[b].team + 1] || "#FFFFFF";
                         if (!noRanking) c = b + 1 + ". " + c;
                         var start = (ctx.measureText(c).width > 200) ? 2 : 100 - ctx.measureText(c).width * 0.5;
                         ctx.fillText(c, start, 70 + 24 * b);
@@ -953,6 +982,57 @@
                 } else {
                     for (b = c = 0; b < teamScores.length; ++b) {
                         var d = c + teamScores[b] * Math.PI * 2;
+                        ctx.fillStyle = teamColor[b + 1];
+                        ctx.beginPath();
+                        ctx.moveTo(100, 140);
+                        ctx.arc(100, 140, 80, c, d, false);
+                        ctx.fill();
+                        c = d
+                    }
+                }
+            }
+    }
+
+    function drawTeamLeaderBoard() {
+        lbCanvas2 = null;
+        var drawTeam = null != teamScore;
+        if (drawTeam || 0 != leaderBoard.length)
+            if (drawTeam || showName) {
+                lbCanvas2 = document.createElement("canvas");
+                var ctx = lbCanvas2.getContext("2d"),
+                    boardLength = 60;
+                boardLength = !drawTeam ? boardLength + 24 * leaderBoard.length : boardLength + 180;
+                var scaleFactor = Math.min(0.22 * canvasHeight, Math.min(200, .3 * canvasWidth)) * 0.005;
+                lbCanvas2.width = 200 * scaleFactor;
+                lbCanvas2.height = boardLength * scaleFactor;
+
+                ctx.scale(scaleFactor, scaleFactor);
+                ctx.globalAlpha = .6;
+                ctx.fillStyle = "#000000";
+                ctx.fillRect(0, 0, 200, boardLength);
+
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = "#FFFFFF";
+                var c = "校際排行榜";
+                ctx.font = "30px Ubuntu";
+                ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
+                var b, l;
+                if (!drawTeam) {
+                    for (ctx.font = "20px Ubuntu", b = 0, l = teamScore.length; b < l; ++b) {
+                        c = teamScore[b].name || "An unnamed cell";
+                        if (!showName) {
+                            (c = "An unnamed cell");
+                        }
+                        var me = -1 != nodesOnScreen.indexOf(teamScore[b].id);
+                        if (me) playerCells[0].name && (c = playerCells[0].name);
+                        me ? ctx.fillStyle = "#FFAAAA" : ctx.fillStyle = teamColor[teamScore[b].team + 1] || "#FFFFFF";
+                        if (!noRanking) c = b + 1 + ". " + c;
+                        var start = (ctx.measureText(c).width > 200) ? 2 : 100 - ctx.measureText(c).width * 0.5;
+                        ctx.fillText(c, start, 70 + 24 * b);
+                    }
+                } else {
+                    for (b = c = 0; b < teamScore.length; ++b) {
+                        var d = c + teamScore[b] * Math.PI * 2;
                         ctx.fillStyle = teamColor[b + 1];
                         ctx.beginPath();
                         ctx.moveTo(100, 140);
@@ -987,7 +1067,7 @@
 
     var localProtocol = wHandle.location.protocol,
         localProtocolHttps = "https:" == localProtocol;
-    var nCanvas, ctx, mainCanvas, lbCanvas, chatCanvas, canvasWidth, canvasHeight, qTree = null,
+    var nCanvas, ctx, mainCanvas, lbCanvas, lbCanvas2, chatCanvas, canvasWidth, canvasHeight, qTree = null,
         ws = null,
         nodeX = 0,
         nodeY = 0,
@@ -1024,6 +1104,7 @@
         posY = nodeY = ~~((topPos + bottomPos) / 2),
         posSize = 1,
         teamScores = null,
+        teamScore = [],
         ma = false,
         hasOverlay = true,
         drawLine = false,
@@ -1032,7 +1113,7 @@
         drawLineX = 0,
         drawLineY = 0,
         Ra = 0,
-        teamColor = ["#333333", "#FF3333", "#3333FF", "#33FF33"],
+        teamColor = ["#333333", "#7647FE", "#009AFF", "#EF1D6A"],
         xa = false,
         zoom = 1,
         isTouchStart = "ontouchstart" in wHandle && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
