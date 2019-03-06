@@ -1,0 +1,16 @@
+@import 'reset';
+@import 'font';
+@import 'color';
+
+@import 'overlay';
+@import 'connect';
+@import 'game';
+@import 'footer';
+
+body {
+  overflow: hidden;
+}
+
+hr {
+  color: rgba($white, .4);
+}

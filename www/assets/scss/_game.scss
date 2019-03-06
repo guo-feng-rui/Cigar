@@ -1,0 +1,164 @@
+.game {
+  &-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  padding: 4rem;
+
+  &-title {
+    color: $white;
+    text-align: center;
+
+    h1#title {
+      font-size: 48px;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+  }
+
+  &-chooser {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+
+    &:hover {
+      .team-container {
+        width: 160px;
+      }
+    }
+
+    .team {
+      &-container {
+        width: 300px;
+        height: 500px;
+        color: $white;
+        border-radius: 2rem 0 0 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 1rem -1rem;
+        cursor: pointer;
+        transform: skewX(-15deg);
+        box-shadow: 0 0 20px $black;
+        transition: all ease-in-out .2s;
+        text-align: left;
+        overflow: hidden;
+        background-size: 70%;
+        background-repeat: no-repeat;
+        background-position: bottom right;
+
+        &:last-child {
+          border-radius: 2rem;
+        }
+
+        &#NTHU {
+          background-image: url('../img/NTHU.png');
+          background-color: $purple;
+        }
+
+        &#NCTU {
+          background-image: url('../img/NCTU.png');
+          background-color: $blue;
+        }
+
+        &#YM {
+          background-image: url('../img/YM.png');
+          background-color: $red;
+        }
+
+        &:hover {
+          width: 600px;
+          background-size: 50%;
+
+          .input {
+            display: flex;
+          }
+        }
+      }
+
+      padding-left: 2rem;
+      display: flex;
+      flex-direction: row;
+
+      .title {
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-image: linear-gradient(90deg, $white 50%, rgba($white, .4));
+      }
+
+      .input {
+        display: none;
+        margin-left: 4rem;
+        flex-direction: column;
+        width: 300px;
+        transition: all ease-in-out .3s;
+        transform: skewX(15deg);
+
+        input,
+        button {
+          -webkit-appearance: none;
+          appearance: none;
+          color: $white;
+          text-align: left;
+          padding: 5px 1rem;
+        }
+
+        input {
+          border: 0;
+          border-bottom: 2px solid $white;
+          background: none;
+          font-size: 32px;
+          letter-spacing: 2px;
+          font-weight: 700;
+
+          &::placeholder {
+            color: rgba($white, .7);
+          }
+        }
+
+        button {
+          background: none;
+          border: 0;
+          font-size: 24px;
+          cursor: pointer;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          
+          svg {
+            height: 24px;
+            margin-left: 1rem;
+          }
+        }
+      }
+
+      h2,
+      h4 {
+        line-height: 1;
+      }
+
+      h2 {
+        font-weight: 700;
+        font-size: 72px;
+        word-break: break-all;
+        width: 72px;
+      }
+
+      h4 {
+        font-weight: 900;
+        font-size: 32px;
+      }
+    }
+  }
+}

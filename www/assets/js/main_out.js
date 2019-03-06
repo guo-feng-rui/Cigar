@@ -963,11 +963,11 @@
                 ctx.globalAlpha = 1;
                 ctx.fillStyle = "#FFFFFF";
                 var c = "個人排行榜";
-                ctx.font = "30px Ubuntu";
+                ctx.font = "30px Noto Sans TC";
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
                 var b, l;
                 if (!drawTeam) {
-                    for (ctx.font = "20px Ubuntu", b = 0, l = leaderBoard.length; b < l; ++b) {
+                    for (ctx.font = "20px Noto Sans TC", b = 0, l = leaderBoard.length; b < l; ++b) {
                         c = leaderBoard[b].name || "An unnamed cell";
                         if (!showName) {
                             (c = "An unnamed cell");
@@ -1014,11 +1014,11 @@
                 ctx.globalAlpha = 1;
                 ctx.fillStyle = "#FFFFFF";
                 var c = "校際排行榜";
-                ctx.font = "30px Ubuntu";
+                ctx.font = "30px Noto Sans TC";
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
                 var b, l;
                 if (!drawTeam) {
-                    for (ctx.font = "20px Ubuntu", b = 0, l = teamScore.length; b < l; ++b) {
+                    for (ctx.font = "20px Noto Sans TC", b = 0, l = teamScore.length; b < l; ++b) {
                         c = teamScore[b].name || "An unnamed cell";
                         if (!showName) {
                             (c = "An unnamed cell");
@@ -1532,7 +1532,7 @@
                     value = this._value,
                     scale = this._scale,
                     fontsize = this._size,
-                    font = fontsize + 'px Ubuntu';
+                    font = fontsize + 'px Noto Sans TC';
                 ctx.font = font;
                 var h = ~~(.2 * fontsize),
                     wd = fontsize * 0.1;

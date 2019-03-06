@@ -1,0 +1,22 @@
+#overlays {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: $dark;
+}
+
+#instructions {
+  text-align: center;
+  font-size: 20px;
+  color: rgba($white, .7);
+
+  b {
+    background-color: $white;
+    color: $dark;
+    border-radius: 5px;
+    padding: 0 7px;
+    font-weight: 700;
+    line-height: 0;
+    font-size: 16px;
+  }
+}
