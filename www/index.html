@@ -11,7 +11,7 @@
     <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <title>Home - Cigar</title>
+    <title>竹梅賽</title>
 
     <link id="favicon" rel="icon" type="image/png" href="assets/img/favicon.png" />
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
@@ -48,56 +48,22 @@
         <div id="helloDialog">
             <form role="form">
                 <div class="form-group">
-                    <h2 id="title">CigarProject</h2>
+                    <h1 id="title">竹梅賽</h1>
                 </div>
 
                 <div class="form-group">
-                    <input id="nick" class="form-control save" data-box-id="0" placeholder="Nick" maxlength="15" />
-                    <select id="gamemode" class="form-control" onchange="setserver($(this).val());" required>
-                        <option disabled>Gamemode:</option>
-                        <option selected value="127.0.0.1:8080">竹梅賽</option>
-                    </select>
+                    <input id="nick" class="form-control save" data-box-id="0" placeholder="Nick" maxlength="25" />
                     <select id="team" class="form-control" required>
                         <option selected disabled>Choose Team:</option>
-                        <option value="NTHU">NTHU</option>
-                        <option value="NCTU">NCTU</option>
-                        <option value="YM">YM</option>
+                        <option value="NTHU">NTHU 清大</option>
+                        <option value="NCTU">NCTU 交大</option>
+                        <option value="YM">YM 陽明</option>
                     </select>
-                    <br clear="both" />
                 </div>
 
                 <div class="form-group">
-                    <div class="mb-10">
-                        <a data-toggle="modal" data-target="#inPageModal" onclick="openSkinsList();" class="btn-primary btn btn-info" role="button" style="width: 100%;">Skins Gallery</a>
-                    </div>
-
-                    <button type="submit" id="play-btn" onclick="setTeam($('#team').val()); setNick(document.getElementById('nick').value); return false;" class="btn btn-play btn-primary btn-needs-server">Play</button>
-                    <button onclick="$('#settings, #instructions').toggle(); return false;" class="btn btn-info btn-settings" id="settings-btn"><i class="glyphicon glyphicon-cog"></i></button>
+                    <button type="submit" id="play-btn" onclick="setTeam($('#team').val()); setNick(document.getElementById('nick').value); return false;" style="width: 100%;" class="btn btn-play btn-primary btn-needs-server">Play</button>
                     <br clear="both" />
-                </div>
-
-                <div id="settings" class="checkbox" style="display:none;">
-                    <div class="form-group" id="mainform">
-                        <button id="spectate-btn" onclick="spectate(); return false;" style="width: 100%" class="btn btn-warning btn-spectate btn-needs-server">Spectate
-                        </button>
-                        <br clear="both" />
-                    </div>
-                    <div style="margin: 6px;">
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="1" onchange="setSkins(!$(this).is(':checked'));"> No skins</label>
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="2" onchange="setNames(!$(this).is(':checked'));"> No names</label>
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="3" onchange="setDarkTheme($(this).is(':checked'));"> Dark Theme</label>
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="4" onchange="setColors($(this).is(':checked'));"> No colors</label>
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="5" onchange="setShowMass($(this).is(':checked'));"> Show mass</label>
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="6" onchange="setSmooth($(this).is(':checked'));"> Smooth Render</label>
-                        <label>
-                            <input type="checkbox" class="save" data-box-id="7" onchange="setChatHide($(this).is(':checked'));"> Hide Chat</label>
-                    </div>
                 </div>
             </form>
 
@@ -114,7 +80,7 @@
 
             <hr />
             <div id="footer">
-                <a href="https://github.com/CigarProject/Cigar" class="text-muted">GitHub/CigarProject</a>
+                <a href="https://aries0d0f.me" target="_blank" rel="noopener noreferrer" class="text-muted">@Aries0d0f</a>
             </div>
 
         </div>
