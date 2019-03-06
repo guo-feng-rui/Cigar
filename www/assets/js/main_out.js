@@ -1169,37 +1169,6 @@
     wHandle.setAcid = function(arg) {
         xa = arg
     };
-    wHandle.openSkinsList = function(arg) {
-        if ($('#inPageModalTitle').text() != "Skins") {
-            $.get('include/gallery.php').then(function(data) {
-                $('#inPageModalTitle').text("Skins");
-                $('#inPageModalBody').html(data);
-            });
-        }
-    };
-
-    if (null != wHandle.localStorage) {
-        wjQuery(window).load(function() {
-            wjQuery(".save").each(function() {
-                var id = $(this).data("box-id");
-                var value = wHandle.localStorage.getItem("checkbox-" + id);
-                if (value && value == "true" && 0 != id) {
-                    $(this).prop("checked", "true");
-                    $(this).trigger("change");
-                } else if (id == 0 && value != null) {
-                    $(this).val(value);
-                }
-            });
-            wjQuery(".save").change(function() {
-                var id = $(this).data('box-id');
-                var value = (id == 0) ? $(this).val() : $(this).prop('checked');
-                wHandle.localStorage.setItem("checkbox-" + id, value);
-            });
-        });
-        if (null == wHandle.localStorage.AB8) {
-            wHandle.localStorage.AB8 = ~~(100 * Math.random());
-        }
-    }
 
     setTimeout(function() {}, 3E5);
     var T = {
@@ -1210,20 +1179,6 @@
     var data = {
         "action": "test"
     };
-    wjQuery.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "checkdir.php",
-        data: data,
-        success: function(data) {
-            response = JSON.parse(data["names"]);
-            for (var i = 0; i < response.length; i++) {
-                if (-1 == knownNameDict.indexOf(response[i])) {
-                    knownNameDict.push(response[i]);
-                }
-            }
-        }
-    });
 
     var delay = 500,
         oldX = -1,

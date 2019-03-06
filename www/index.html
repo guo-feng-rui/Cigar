@@ -14,9 +14,7 @@
     <title>竹梅賽</title>
 
     <link id="favicon" rel="icon" type="image/png" href="assets/img/favicon.png" />
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/index.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="assets/js/log.js"></script>
@@ -25,25 +23,6 @@
 </head>
 
 <body>
-    <div class="modal fade" id="inPageModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 id="inPageModalTitle" class="modal-title">Failed to Load</h4>
-                </div>
-                <div id="inPageModalBody" class="modal-body">
-                    <p>Failed to load. Please check your connection!</p>
-                    <div class="center">
-                        <div class="loader"></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="overlays">
         <div id="helloDialog">
             <form role="form">
@@ -87,7 +66,7 @@
     </div>
 
     <div id="connecting">
-        <div style="width: 350px; background-color: #FFFFFF; margin: 100px auto; border-radius: 15px; padding: 5px 15px 5px 15px;">
+        <div class="msg-box">
             <h2>Connecting</h2>
             <p> If you cannot connect to the servers, check if you have some anti virus or firewall blocking the connection.</p>
         </div>
@@ -95,8 +74,5 @@
 
     <canvas id="canvas" width="800" height="600"></canvas>
     <input type="text" id="chat_textbox" placeholder="Press enter to chat!" maxlength="200" />
-    <div style="font-family:'Ubuntu'">&nbsp;</div>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
