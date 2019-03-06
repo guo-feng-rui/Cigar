@@ -957,11 +957,11 @@
 
                 ctx.scale(scaleFactor, scaleFactor);
                 ctx.globalAlpha = .6;
-                ctx.fillStyle = "#000000";
+                ctx.fillStyle = "#FFFFFF";
                 ctx.fillRect(0, 0, 200, boardLength);
 
                 ctx.globalAlpha = 1;
-                ctx.fillStyle = "#FFFFFF";
+                ctx.fillStyle = "#000000";
                 var c = "個人排行榜";
                 ctx.font = "30px Noto Sans TC";
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
@@ -1008,11 +1008,11 @@
 
                 ctx.scale(scaleFactor, scaleFactor);
                 ctx.globalAlpha = .6;
-                ctx.fillStyle = "#000000";
+                ctx.fillStyle = "#FFFFFF";
                 ctx.fillRect(0, 0, 200, boardLength);
 
                 ctx.globalAlpha = 1;
-                ctx.fillStyle = "#FFFFFF";
+                ctx.fillStyle = "#000000";
                 var c = "校際排行榜";
                 ctx.font = "30px Noto Sans TC";
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
