@@ -1,8 +1,12 @@
 #overlays {
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
-  position: fixed;
+  position: absolute;
   background-color: $dark;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #instructions {

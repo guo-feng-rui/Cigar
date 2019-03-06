@@ -33,6 +33,14 @@
     &:hover {
       .team-container {
         width: 160px;
+
+        @media screen and (max-width: 675px) {
+          width: 100px;
+        }
+
+        @media screen and (max-width: 375px) {
+          width: 80px;
+        }
       }
     }
 
@@ -57,6 +65,20 @@
         background-repeat: no-repeat;
         background-position: bottom right;
 
+        @media screen and (max-width: 1000px) {
+          width: 200px;
+        }
+
+        @media screen and (max-width: 675px) {
+          transform: skewX(0);
+          width: 120px;
+          height: 300px;
+        }
+
+        @media screen and (max-width: 375px) {
+          width: 100px;
+        }
+
         &:last-child {
           border-radius: 2rem;
         }
@@ -80,6 +102,18 @@
           width: 600px;
           background-size: 50%;
 
+          @media screen and (max-width: 1000px) {
+            width: 450px;
+          }
+
+          @media screen and (max-width: 675px) {
+            width: 300px;
+          }
+
+          @media screen and (max-width: 375px) {
+            width: 275px;
+          }
+
           .input {
             display: flex;
           }
@@ -89,6 +123,14 @@
       padding-left: 2rem;
       display: flex;
       flex-direction: row;
+
+      @media screen and (max-width: 675px) {
+        padding-left: 1rem;
+      }
+
+      @media screen and (max-width: 375px) {
+        padding-left: .5rem;
+      }
 
       .title {
         background-clip: text;
@@ -105,6 +147,15 @@
         transition: all ease-in-out .3s;
         transform: skewX(15deg);
 
+        @media screen and (max-width: 1000px) {
+          margin-left: 1.8rem;
+        }
+
+        @media screen and (max-width: 675px) {
+          transform: skewX(0);
+          margin-left: .5rem;
+        }
+
         input,
         button {
           -webkit-appearance: none;
@@ -112,6 +163,7 @@
           color: $white;
           text-align: left;
           padding: 5px 1rem;
+          padding-left: 0;
         }
 
         input {
@@ -121,6 +173,15 @@
           font-size: 32px;
           letter-spacing: 2px;
           font-weight: 700;
+
+          @media screen and (max-width: 1000px) {
+            font-size: 28px;
+            letter-spacing: 1px;
+          }
+
+          @media screen and (max-width: 675px) {
+            font-size: 20px;
+          }
 
           &::placeholder {
             color: rgba($white, .7);
@@ -153,11 +214,29 @@
         font-size: 72px;
         word-break: break-all;
         width: 72px;
+
+        @media screen and (max-width: 675px) {
+          font-size: 48px;
+          width: 48px;
+        }
+
+        @media screen and (max-width: 375px) {
+          font-size: 36px;
+          width: 36px;
+        }
       }
 
       h4 {
         font-weight: 900;
         font-size: 32px;
+
+        @media screen and (max-width: 675px) {
+          font-size: 18px;
+        }
+
+        @media screen and (max-width: 375px) {
+          font-size: 14px;
+        }
       }
     }
   }
