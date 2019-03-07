@@ -131,7 +131,7 @@
                     }
                     break;
                 case 27: // esc
-                    showOverlays(true);
+                   // showOverlays(true);
                     break;
             }
         };
