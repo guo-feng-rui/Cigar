@@ -1001,7 +1001,7 @@
                 lbCanvas2 = document.createElement("canvas");
                 var ctx = lbCanvas2.getContext("2d"),
                     boardLength = 60;
-                boardLength = !drawTeam ? boardLength + 24 * leaderBoard.length : boardLength + 180;
+                boardLength = !drawTeam ? boardLength + 24 * leaderBoard.length : boardLength + 220;
                 var scaleFactor = Math.min(0.22 * canvasHeight, Math.min(200, .3 * canvasWidth)) * 0.005;
                 lbCanvas2.width = 200 * scaleFactor;
                 lbCanvas2.height = boardLength * scaleFactor;
@@ -1016,6 +1016,16 @@
                 var c = "校際排行榜";
                 ctx.font = "30px Noto Sans TC";
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
+                ctx.fillStyle = "#7647FE";
+                ctx.font = "14px Noto Sans TC";
+                var nthu = "• 清大 ";
+                var nctu = "• 交大 ";
+                var ym = "• 陽明";
+                ctx.fillText(nthu, 100 - (ctx.measureText(nthu).width + ctx.measureText(nctu).width + ctx.measureText(ym).width) * 0.5, 80);
+                ctx.fillStyle = "#009AFF";
+                ctx.fillText(nctu, 100 - (ctx.measureText(nthu).width + ctx.measureText(nctu).width + ctx.measureText(ym).width) * 0.5 + ctx.measureText(nthu).width, 80);
+                ctx.fillStyle = "#EF1D6A";                
+                ctx.fillText(ym, 100 - (ctx.measureText(nthu).width + ctx.measureText(nctu).width + ctx.measureText(ym).width) * 0.5 + ctx.measureText(nthu).width + ctx.measureText(nctu).width, 80);
                 var b, l;
                 if (!drawTeam) {
                     for (ctx.font = "20px Noto Sans TC", b = 0, l = teamScore.length; b < l; ++b) {
@@ -1035,8 +1045,8 @@
                         var d = c + teamScore[b] * Math.PI * 2;
                         ctx.fillStyle = teamColor[b + 1];
                         ctx.beginPath();
-                        ctx.moveTo(100, 140);
-                        ctx.arc(100, 140, 80, c, d, false);
+                        ctx.moveTo(100, 180);
+                        ctx.arc(100, 180, 80, c, d, false);
                         ctx.fill();
                         c = d
                     }
