@@ -1,0 +1,392 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700,900");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ul,
+li,
+ol,
+span,
+div,
+input,
+button {
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+#overlays {
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  background-color: #494949;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#instructions {
+  text-align: center;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#instructions b {
+  background-color: #ffffff;
+  color: #494949;
+  border-radius: 5px;
+  padding: 0 7px;
+  font-weight: 700;
+  line-height: 0;
+  font-size: 16px;
+}
+
+#connecting {
+  position: fixed;
+}
+
+.game {
+  padding: 4rem;
+}
+
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-title {
+  color: #ffffff;
+  text-align: center;
+}
+
+.game-title h1#title {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.game-title h3 {
+  font-size: 24px;
+}
+
+.game-chooser {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.game-chooser:hover .team-container {
+  width: 160px;
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser:hover .team-container {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .game-chooser:hover .team-container {
+    width: 80px;
+  }
+}
+
+.game-chooser .team {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.game-chooser .team-container {
+  width: 300px;
+  height: 500px;
+  color: #ffffff;
+  border-radius: 2rem 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1rem -1rem;
+  cursor: pointer;
+  transform: skewX(-15deg);
+  box-shadow: 0 0 20px #2c2c2c;
+  transition: all ease-in-out .2s;
+  text-align: left;
+  overflow: hidden;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+@media screen and (max-width: 1000px) {
+  .game-chooser .team-container {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team-container {
+    transform: skewX(0);
+    width: 120px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .game-chooser .team-container {
+    width: 100px;
+  }
+}
+
+.game-chooser .team-container:last-child {
+  border-radius: 2rem;
+}
+
+.game-chooser .team-container#NTHU {
+  background-image: url("../img/NTHU.png");
+  background-color: #7647FE;
+}
+
+.game-chooser .team-container#NCTU {
+  background-image: url("../img/NCTU.png");
+  background-color: #009AFF;
+}
+
+.game-chooser .team-container#YM {
+  background-image: url("../img/YM.png");
+  background-color: #EF1D6A;
+}
+
+.game-chooser .team-container:hover {
+  width: 600px;
+  background-size: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+  .game-chooser .team-container:hover {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team-container:hover {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .game-chooser .team-container:hover {
+    width: 275px;
+  }
+}
+
+.game-chooser .team-container:hover .input {
+  display: flex;
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team {
+    padding-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .game-chooser .team {
+    padding-left: .5rem;
+  }
+}
+
+.game-chooser .team .title {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #ffffff 50%, rgba(255, 255, 255, 0.4));
+}
+
+.game-chooser .team .input {
+  display: none;
+  margin-left: 4rem;
+  flex-direction: column;
+  width: 300px;
+  transition: all ease-in-out .3s;
+  transform: skewX(15deg);
+}
+
+@media screen and (max-width: 1000px) {
+  .game-chooser .team .input {
+    margin-left: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team .input {
+    transform: skewX(0);
+    margin-left: .5rem;
+  }
+}
+
+.game-chooser .team .input input,
+.game-chooser .team .input button {
+  -webkit-appearance: none;
+  appearance: none;
+  color: #ffffff;
+  text-align: left;
+  padding: 5px 1rem;
+  padding-left: 0;
+  outline: none;
+}
+
+.game-chooser .team .input input {
+  border: 0;
+  border-bottom: 2px solid #ffffff;
+  background: none;
+  font-size: 32px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1000px) {
+  .game-chooser .team .input input {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team .input input {
+    font-size: 20px;
+  }
+}
+
+.game-chooser .team .input input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.game-chooser .team .input button {
+  background: none;
+  border: 0;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.game-chooser .team .input button svg {
+  height: 24px;
+  margin-left: 1rem;
+}
+
+.game-chooser .team h2,
+.game-chooser .team h4 {
+  line-height: 1;
+}
+
+.game-chooser .team h2 {
+  font-weight: 700;
+  font-size: 72px;
+  word-break: break-all;
+  width: 72px;
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team h2 {
+    font-size: 48px;
+    width: 48px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .game-chooser .team h2 {
+    font-size: 36px;
+    width: 36px;
+  }
+}
+
+.game-chooser .team h4 {
+  font-weight: 900;
+  font-size: 32px;
+}
+
+@media screen and (max-width: 675px) {
+  .game-chooser .team h4 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .game-chooser .team h4 {
+    font-size: 14px;
+  }
+}
+
+#footer,
+#footer a {
+  color: #ffffff;
+}
+
+hr {
+  color: rgba(255, 255, 255, 0.4);
+}
