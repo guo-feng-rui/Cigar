@@ -1,0 +1,15 @@
+div.web {
+        display: block;
+}
+div.mobile{
+        display: none;
+}
+
+@media screen and (max-width: 600px) {
+  div.web {
+        display: none;
+  }
+  div.mobile{
+        display: block;
+  }
+}
