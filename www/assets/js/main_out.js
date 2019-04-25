@@ -1018,9 +1018,9 @@
                 ctx.fillText(c, 100 - ctx.measureText(c).width * 0.5, 40);
                 ctx.fillStyle = "#7647FE";
                 ctx.font = "14px Noto Sans TC";
-                var nthu = "• 清大 ";
-                var nctu = "• 交大 ";
-                var ym = "• 陽明";
+                var nthu = "• NTHU ";
+                var nctu = "• NCTU ";
+                var ym = "• YM";
                 ctx.fillText(nthu, 100 - (ctx.measureText(nthu).width + ctx.measureText(nctu).width + ctx.measureText(ym).width) * 0.5, 80);
                 ctx.fillStyle = "#009AFF";
                 ctx.fillText(nctu, 100 - (ctx.measureText(nthu).width + ctx.measureText(nctu).width + ctx.measureText(ym).width) * 0.5 + ctx.measureText(nthu).width, 80);
